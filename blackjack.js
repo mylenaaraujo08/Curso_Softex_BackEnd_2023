@@ -8,3 +8,4 @@ if (somacartas > 21) {
 } else {
   console.log("Você ganhou! A soma das cartas é menor ou igual a 21.");
 }
+console.log("Pontuação do jogador: " + somacartas);
