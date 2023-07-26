@@ -1,4 +1,4 @@
-function podeDirigir(idade, temAutorizacaoPais) {
+var podeDirigir(idade, temautorizacaoPais) {
     if (idade >= 18) {
       return "Você tem 18 anos ou mais, pode dirigir sem a autorização dos pais.";
     } else if (idade >= 16 && temAutorizacaoPais) {
@@ -8,12 +8,12 @@ function podeDirigir(idade, temAutorizacaoPais) {
     }
   }
   // Exemplos de uso:
-  const idade1 = 15;
-  const temAutorizacaoPais1 = false;
-  console.log(podeDirigir(idade1, temAutorizacaoPais1)); 
-  const idade2 = 16;
-  const temAutorizacaoPais2 = true;
-  console.log(podeDirigir(idade2, temAutorizacaoPais2)); 
-  const idade3 = 18;
-  const temAutorizacaoPais3 = false;
-  console.log(podeDirigir(idade3, temAutorizacaoPais3));
+var idade1 = 15;
+var temAutorizacaoPais01 = false;
+console.log(podeDirigir(idade1, temAutorizacaoPais01)); 
+var idade2 = 16;
+var temAutorizacaoPais02 = true;
+console.log(podeDirigir(idade2, temAutorizacaoPais02)); 
+var idade3 = 18;
+var temAutorizacaoPais03 = false;
+console.log(podeDirigir(idade3, temAutorizacaoPais03));
