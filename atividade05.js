@@ -12,4 +12,4 @@ if (numeros.includes(25)) {
   console.log("O número 25 foi encontrado no array.");
 } else {
   console.log("O número 25 não foi encontrado no array.");
-}
+}   
