@@ -8,4 +8,10 @@ console.log(numerosPares);
 const numeros2 = [3, 1, 4, 1, 5, 9, 2, ,6, 5, 3, 5]
 numeros2.sort((a, b) => a - b);
 console.log(numeros2);
-const frutas = ["maçã, "banana", "laranja", "uva", "manga"];
+const frutas = ["maçã", "banana", "laranja", "uva", "manga"];
+const indiceLaranja = frutas.indexOf("laranja");
+console.log(indiceLaranja); 
+function verificarArray(parametro) {
+  return Array.isArray(parametro);
+}
+console.log(verificarArray([1, 6, 12, 18, 24]));
