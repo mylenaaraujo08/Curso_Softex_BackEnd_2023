@@ -27,5 +27,5 @@ var minhaVariavel = true;
 if (typeof minhaVariavel === "boolean") {
   console.log("A variável é do tipo booleano.");
 } else {
-  console.log("A variável não é do tipo booleano.");
+ console.log("A variável não é do tipo booleano.");
 }
