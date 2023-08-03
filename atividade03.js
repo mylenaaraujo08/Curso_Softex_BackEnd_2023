@@ -15,4 +15,4 @@ function podeDirigir(idade, temAutorizacaoPais) {
   console.log (podeDirigir(idade2, temAutorizacaoPais02)); 
   var idade3 = 18;
   var temAutorizacaoPais03 = false;
-  console.log (podeDirigir(idade3, temAutorizacaoPais03)); 
+  console.log (podeDirigir(idade3, temAutorizacaoPais03));
