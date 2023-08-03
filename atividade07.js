@@ -10,7 +10,6 @@ function classificarNumero(numero) {
 console.log(classificarNumero(-5)); 
 console.log(classificarNumero(0));  
 console.log(classificarNumero(10));
-
 function verificarDivisibilidade(numero) {
   if (numero % 2 === 0) {
     return "Divisível por 2";
@@ -23,7 +22,6 @@ function verificarDivisibilidade(numero) {
   }
 }
 console.log(verificarDivisibilidade(15));  
-
 function classificarVariavel(valor) {
   if (typeof valor === 'boolean') {
     return 'Booleano';
@@ -38,7 +36,6 @@ function classificarVariavel(valor) {
   }
 }
 console.log(classificarVariavel(true));            
-
 function classificarNumero(numero) {
   if (numero < 0) {
     return "Negativo";
@@ -54,7 +51,6 @@ function classificarNumero(numero) {
   }
 }
 console.log(classificarNumero(10));
-
 function verificarDivisibilidade(numero) {
   if (numero % 2 === 0) {
     return "Divisível por 2";
