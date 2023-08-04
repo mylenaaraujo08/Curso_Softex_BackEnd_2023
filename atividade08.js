@@ -39,13 +39,6 @@ if (ehPrimo) {
   console.log(n + " é primo");
 }
 
-const senhaCorreta = "senha 2304";
-let senhaDigitada = prompt("Digite a senha: " + senhaCorreta);
-while (senhaDigitada !== senhaCorreta) {
-  senhaDigitada = prompt("Senha incorreta. Digite novamente: ");
-}
-console.log("Senha correta! Acesso permitido." + senhaCorreta);
-
 function calcularMedia(listaDeNumeros) {
   if (listaDeNumeros.length === 0) {
     return 0; 
