@@ -23,6 +23,7 @@ function divisao(numero1, numero2) {
   if (numero2 === 0) {
     return "Não é possível dividir por zero.";
   }
+  
   return numero1 / numero2;
 }
 console.log(divisao(10, 2));
