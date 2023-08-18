@@ -23,6 +23,7 @@ if (numero > 10) {
 } else {
   console.log("O número não é maior que 10.");
 }
+
 var minhaVariavel = true;
 if (typeof minhaVariavel === "boolean") {
   console.log("A variável é do tipo booleano.");
