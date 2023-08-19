@@ -62,3 +62,4 @@ if (vencedor === candidato_X) {
     console.log("Candidato Z é o vencedor!");
 }
 
+
