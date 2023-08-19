@@ -1,17 +1,17 @@
-let candidato_X = 0;
-let candidato_Y = 0;
-let candidato_Z = 0;
-let branco = 0;
+var candidato_X = 0;
+var candidato_Y = 0;
+var candidato_Z = 0;
+var branco = 0;
 
 while (true) {
-    console.log("Eleição - Escolha seu candidato:");
-    console.log("1 - Candidato X = 889");
-    console.log("2 - Candidato Y = 847");
-    console.log("3 - Candidato Z = 515");
-    console.log("4 - Voto em Branco = 0");
-    console.log("5 - Encerrar a votação");
+    console.log("Eleição - Escolha o seu candidato:");
+    console.log("Candidato X = 889");
+    console.log("Candidato Y = 847");
+    console.log("Candidato Z = 515");
+    console.log("Voto em Branco = 0");
+    console.log("Encerrar a votação");
 
-    let voto = prompt("Digite o número do seu voto:");
+    var voto = prompt("Digite o número do seu voto:");
 
     if (!isNaN(voto)) {
         voto = parseInt(voto);
@@ -36,7 +36,7 @@ while (true) {
                 break;
         }
     } else {
-        console.log("Voto inválido: Digite um número válido");
+        console.log("Digite um número válido");
     }
 
     if (voto === 5) {
