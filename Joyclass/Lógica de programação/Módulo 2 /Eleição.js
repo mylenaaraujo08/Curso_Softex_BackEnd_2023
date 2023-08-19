@@ -1,5 +1,4 @@
 const readline = require('readline-sync');
-
 const Candidato = {
     X: "candidato_X",
     Y: "candidato_Y",
@@ -17,7 +16,6 @@ var votos = {
     "Branco": 0,
     "Nulo": 0,
 };
-
 while (true) {
     console.log("Eleição - Escolha seu candidato:");
     console.log(`1 - Candidato X = 889`);
@@ -50,3 +48,19 @@ while (true) {
     }
 }
 console.log("\nVotação encerrada");
+console.log("Resultados da Votação:");
+
+for (const candidato in votos) {
+    console.log(`${candidato}: ${votos[candidato]} votos`);
+}
+// Determinar o vencedor
+var vencedor = null;
+for (const candidato in votos) {
+    if (vencedor === null || votos[candidato] > votos[vencedor]) {
+        vencedor = candidato;
+    }
+}
+if (vencedor === "Branco" || vencedor === "Nulo") {
+    console.log(`Vencedor: Votação em ${vencedor}`);
+} else {
+    console.log(`Vencedor: ${vencedor} com ${votos[vencedor]} votos`);
