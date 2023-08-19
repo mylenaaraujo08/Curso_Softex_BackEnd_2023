@@ -1,63 +1,66 @@
-const readline = require('readline-sync');
-const Candidato = {
-    X: "candidato_X",
-    Y: "candidato_Y",
-    Z: "candidato_Z",
-};
-const numeroParaCandidato = {
-    1: Candidato.X,
-    2: Candidato.Y,
-    3: Candidato.Z,
-};
-var votos = {
-    [Candidato.X]: 0,
-    [Candidato.Y]: 0,
-    [Candidato.Z]: 0,
-    "Branco": 0,
-    "Nulo": 0,
-};
+let candidato_X = 0;
+let candidato_Y = 0;
+let candidato_Z = 0;
+let branco = 0;
+
 while (true) {
     console.log("Eleição - Escolha seu candidato:");
-    console.log(`1 - Candidato X = 889`);
-    console.log(`2 - Candidato Y = 847`);
-    console.log(`3 - Candidato Z  = 515`);
-    console.log(`4 - Voto em Branco  = 0`);
+    console.log("1 - Candidato X = 889");
+    console.log("2 - Candidato Y = 847");
+    console.log("3 - Candidato Z = 515");
+    console.log("4 - Voto em Branco = 0");
     console.log("5 - Encerrar a votação");
-  
-    var voto = readline.questionInt("Digite o número do seu voto:");
-    
-  if (voto >= 1 && voto <= 5) {
+
+    let voto = prompt("Digite o número do seu voto:");
+
+    if (!isNaN(voto)) {
+        voto = parseInt(voto);
+
         switch (voto) {
             case 1:
+                candidato_X++;
+                break;
             case 2:
+                candidato_Y++;
+                break;
             case 3:
-                const candidatoEscolhido = numeroParaCandidato[voto];
-                votos[candidatoEscolhido]++;
+                candidato_Z++;
                 break;
             case 4:
-                votos["Branco"]++;
+                branco++;
                 break;
             case 5:
                 break;
-        }
-        if (voto === 5) {
-            break;
+            default:
+                console.log("Voto nulo: Opção inválida");
+                break;
         }
     } else {
         console.log("Voto inválido: Digite um número válido");
     }
-}
-console.log("\nVotação encerrada");
-console.log("Resultados da Votação:");
 
-for (const candidato in votos) {
-    console.log(`${candidato}: ${votos[candidato]} votos`);
+    if (voto === 5) {
+        break;
+    }
 }
-// Determinar o vencedor
-var vencedor = null;
-for (const candidato in votos) {
-    if (vencedor === null || votos[candidato] > votos[vencedor]) {
-        vencedor = candidato;
+
+const total_votos = candidato_X + candidato_Y + candidato_Z + branco;
+console.log("\nVotação encerrada");
+console.log(`Total de votos: ${total_votos}`);
+console.log(`Candidato X: ${candidato_X} votos`);
+console.log(`Candidato Y: ${candidato_Y} votos`);
+console.log(`Candidato Z: ${candidato_Z} votos`);
+console.log(`Votos em branco: ${branco} votos`);
+console.log(`Votos nulos: ${total_votos - (candidato_X + candidato_Y + candidato_Z + branco)} votos`);
+
+const vencedor = Math.max(candidato_X, candidato_Y, candidato_Z);
+if (vencedor === candidato_X) {
+    console.log("Candidato X é o vencedor!");
+} else if (vencedor === candidato_Y) {
+    console.log("Candidato Y é o vencedor!");
+} else if (vencedor === candidato_Z) {
+    console.log("Candidato Z é o vencedor!");
+}
     }
 }
 if (vencedor === "Branco" || vencedor === "Nulo") {
