@@ -61,9 +61,3 @@ if (vencedor === candidato_X) {
 } else if (vencedor === candidato_Z) {
     console.log("Candidato Z é o vencedor!");
 }
-    }
-}
-if (vencedor === "Branco" || vencedor === "Nulo") {
-    console.log(`Vencedor: Votação em ${vencedor}`);
-} else {
-    console.log(`Vencedor: ${vencedor} com ${votos[vencedor]} votos`);
