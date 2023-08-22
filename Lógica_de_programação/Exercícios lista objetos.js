@@ -53,4 +53,3 @@ const livro = {
 console.log(livro);
 
 
-
