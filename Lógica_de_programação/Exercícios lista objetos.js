@@ -48,7 +48,7 @@ console.log(dados.valores);
 
 const livro = {
   titulo: "livro",
-  autor: "João"
+  autor: "Maria"
 };
 console.log(livro);
 
