@@ -51,5 +51,3 @@ const livro = {
   autor: "Maria"
 };
 console.log(livro);
-
-
