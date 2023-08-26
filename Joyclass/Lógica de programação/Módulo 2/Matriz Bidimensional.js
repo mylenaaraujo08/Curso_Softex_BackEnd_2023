@@ -1,9 +1,7 @@
 let animais = [
-    ["Gato", "Felino", 6],
-    ["Cachorro", "Canino", 4],
-    ["Pássaro", "Ave", 8],
-    ["Leão", "Felino", 10],
-    ["Cobra", "Réptil", 5]
+    ["Gato", "Birmanês", 6],
+    ["Cachorro", "poodle", 4],
+    ["Pássaro", "João-de-barro", 8]
 ];
 function mostrarInformacoesAnimais(matriz) {
     for (let i = 0; i < matriz.length; i++) {
