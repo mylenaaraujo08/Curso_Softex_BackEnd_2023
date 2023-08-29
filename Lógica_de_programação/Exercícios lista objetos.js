@@ -1,25 +1,28 @@
-const objetoVazio = {};
-
 const pessoa = {};
 pessoa.nome = "João";
 
-const usuario = { nome: "Mylena", idade: 24};
-const idadeDoUsuario = usuario["idade"];
-console.log(idadeDoUsuario);
+const usuario = {
+    idade: 30 
+  };
+  console.log(usuario.idade);
 
-const produto = { preco:50};
-produto.preco = 75;
-console.log(produto.preco);
+  const idadeDoUsuario = usuario.idade;
+  const produto = {
+    preco: 50
+  };
+  console.log(produto.preco);
 
-const contato = {
-  nome:" Mylena",
-  email:"mylena08@gmail.com"
-};
-delete contato.email;
+  const contato = {
+    nome: "João",
+    email:"joãobarbosa@gmail.com"
+  };
+  const contatoSemEmail = {...contato};
+  delete contatoSemEmail.email;
+  console.log(contatoSemEmail);
 
 const cliente = {
-  nome: " Larissa",
-  idade: 28
+  nome: "Maria",
+  idade: 24
 };
 cliente.endereco = "Rua A, 123";
 console.log(cliente);
