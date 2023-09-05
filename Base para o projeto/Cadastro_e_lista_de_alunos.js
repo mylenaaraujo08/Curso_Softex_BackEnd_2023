@@ -5,6 +5,8 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+let gerador_matricula = 2023100000;
+
 const alunos = [
   {
     Nome: "Mylena Oliveira",
@@ -19,6 +21,33 @@ const alunos = [
 ];
 
 function cadastrarAluno() {
+  rl.question('Digite o nome do aluno: ', (nome) => {
+    const matricula = gerador_matricula++;
+    const notas = [];
+
+    function lerNota(indice) {
+      if (indice < 3) {
+        rl.question(`Digite a nota ${indice + 1} do aluno: `, (nota) => {
+          notas.push(parseFloat(nota));
+          lerNota(indice + 1);
+        });
+      } else {
+        const aluno = {
+          Nome: nome,
+          Matricula: matricula,
+          Notas: notas
+        };
+
+        alunos.push(aluno);
+        console.log('Aluno cadastrado com sucesso!');
+        rl.question('Pressione Enter para continuar...', () => {
+          main();
+        });
+      }
+    }
+
+    lerNota(0);
+  });
 }
 
 function calcularMedia(notas) {
@@ -79,4 +108,5 @@ function main() {
     }
   });
 }
+
 main();
