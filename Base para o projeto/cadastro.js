@@ -32,6 +32,27 @@ function listarVeiculos() {
   }
 }
 
+function cadastrarNovoVeiculo() {
+  console.log("Cadastrar um novo veiculo");
+  console.log("------------------------");
+
+  let tipo = readline.question("Tipo do veiculo: ");
+  let modelo = readline.question("Modelo do veiculo: ");
+  let cores = readline.question("Cores disponiveis (separadas por virgula): ").split(",");
+  let preco = readline.questionFloat("Preco do veiculo: ");
+
+  const novoVeiculo = {
+    Tipo: tipo,
+    Modelo: modelo,
+    Cor: cores,
+    preco: preco,
+  };
+
+  veiculos.push(novoVeiculo);
+
+  console.log(`Veiculo "${modelo}" cadastrado com sucesso!`);
+}
+
 function buscarVeiculoPorModelo() {
   let modeloBusca = readline.question("Qual o modelo do veículo que deseja buscar: ");
   let encontrados = [];
@@ -60,27 +81,6 @@ function exibirVeiculo(veiculo) {
   console.log(`Cores: ${veiculo.Cor.join(", ")}`);
   console.log(`Preço: R$ ${veiculo.preco.toFixed(2)}`);
   console.log("------------------------");
-} 
-
-function cadastrarNovoVeiculo() {
-  console.log("Cadastrar um novo veiculo");
-  console.log("------------------------");
-
-  let tipo = readline.question("Tipo do veiculo: ");
-  let modelo = readline.question("Modelo do veiculo: ");
-  let cores = readline.question("Cores disponiveis (separadas por virgula): ").split(",");
-  let preco = readline.questionFloat("Preco do veiculo: ");
-
-  const novoVeiculo = {
-    Tipo: tipo,
-    Modelo: modelo,
-    Cor: cores,
-    preco: preco,
-  };
-
-  veiculos.push(novoVeiculo);
-
-  console.log(`Veiculo "${modelo}" cadastrado com sucesso!`);
 }
 
 while (loop) {
@@ -90,7 +90,7 @@ while (loop) {
   console.log("0 - Sair do sistema");
   console.log("1 - Lista de todos os veiculos");
   console.log("2 - Cadastrar um novo veiculo");
-  console.log("3 - Buscar veiculo por modelo");
+   console.log("3 - Buscar veiculo por modelo");
   console.log("4 - Alterar um veiculo");
   console.log("5 - Remover um veiculo");
   console.log("==========================");
@@ -103,10 +103,6 @@ while (loop) {
       break;
     case 2:
       cadastrarNovoVeiculo();
-      readline.keyInPause();
-      break;
-    case 3:
-      buscarVeiculoPorModelo();
       readline.keyInPause();
       break;
     case 0:
