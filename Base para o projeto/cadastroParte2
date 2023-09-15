@@ -1,0 +1,16 @@
+while (loop) {
+  console.clear();
+  console.log("============ CADASTRO DE VEÍCULOS ===========");
+  console.log("==================== MENU ===================");
+
+  console.log("1 - Lista de todos os veículos");
+  console.log("2 - Cadastrar um novo veículo");
+  console.log("3 - Buscar veículo por tipo, modelo e ano");
+  console.log("4 - Alterar um veículo");
+  console.log("5 - Remover um veículo");
+
+  console.log("================ MENU ADICIONAL ==============");
+  console.log("6 - Listar veículos por tipo modificado");
+  console.log("0 - Sair do Sistema");
+  console.log("==============================================");
+  let opcao = readline.questionInt("Escolha uma opção: ");
