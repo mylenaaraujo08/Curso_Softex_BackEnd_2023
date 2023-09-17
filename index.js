@@ -7,6 +7,7 @@ class Veiculo {
     this.ano = ano;
     this.cores = cores;
     this.preco = preco;
+    this.modificado = false;
   }
 
   exibir() {
@@ -16,6 +17,7 @@ class Veiculo {
     console.log(`Ano: ${this.ano}`);
     console.log(`Cor: ${this.cores}`);
     console.log(`Preço: ${this.preco.toLocaleString('pt-br', { minimumFractionDigits: 2 })} `);
+    console.log(`Modificado: ${this.modificado ? 'Sim' : 'Não'}`);
     console.log("------------------------");
   }
 }
@@ -29,20 +31,25 @@ let veiculos = [
   new Veiculo("Moto", "Fazer", 2019, "Azul", 23000)
 ];
 
-function listarVeiculos(tipoModificado) {
+let veiculosCadastrados = []; 
+
+function listarVeiculos(tipoModificado, mostrarModificados) {
   console.log(`Listando veículos ${tipoModificado ? `do tipo "${tipoModificado}"` : ''}`);
   console.log("---------------------------");
 
   const veiculosFiltrados = tipoModificado ? veiculos.filter(v => v.tipo.toLowerCase() === tipoModificado.toLowerCase()) : veiculos;
 
-  if (veiculosFiltrados.length > 0) {
-    veiculosFiltrados.forEach(v => v.exibir());
+  if (mostrarModificados) {
+    const veiculosModificados = veiculosFiltrados.filter(v => v.modificado);
+    if (veiculosModificados.length > 0) {
+      veiculosModificados.forEach(v => v.exibir());
+    } else {
+      console.log(`Nenhum veículo ${tipoModificado ? `do tipo "${tipoModificado}" ` : ''}modificado.`);
+    }
   } else {
-    console.log(`Nenhum veículo ${tipoModificado ? `do tipo "${tipoModificado}" ` : ''}encontrado.`);
+    veiculosFiltrados.forEach(v => v.exibir());
   }
 }
-
-
 
 function cadastrarNovoVeiculo(tipo) {
   console.log(`Cadastrar um novo veículo do tipo "${tipo}"`);
@@ -61,9 +68,9 @@ function cadastrarNovoVeiculo(tipo) {
   novoVeiculo.preco = preco;
 
   veiculos.push(novoVeiculo);
+  veiculosCadastrados.push(novoVeiculo); 
 
   console.log(`Veículo "${modelo}" cadastrado com sucesso!`);
-
   console.log("Veículo cadastrado:");
   novoVeiculo.exibir();
 }
@@ -143,6 +150,7 @@ function alterarVeiculo() {
         }
 
         if (continuarAlterando) {
+          veiculoSelecionado.modificado = true;
           console.log(`O veículo "${veiculoSelecionado.modelo}" foi alterado com sucesso!`);
 
           const continuarOpcao = readline.keyInYNStrict("Deseja continuar alterando? (Sim/Não): ");
@@ -157,6 +165,7 @@ function alterarVeiculo() {
   } else {
     console.log(`*** O Veículo ${tipoAltera} não foi encontrado.***`);
   }
+  console.log("Não há mais itens para alterar.");
   readline.keyInPause();
 }
 
@@ -188,7 +197,7 @@ function removerVeiculo(tipoRemover) {
 
         console.log(`O veículo "${veiculoSelecionado.modelo}" foi removido com sucesso!`);
 
-        veiculosParaRemover.length = 0; // Limpa o array para evitar repetições
+        veiculosParaRemover.length = 0; 
 
         let continuarRemovendo = readline.keyInYNStrict("Deseja continuar a remover outro veículo? (Sim/Não): ");
         if (continuarRemovendo) {
@@ -227,7 +236,8 @@ while (loop) {
   console.log("5 - Remover um veículo");
 
   console.log("================ MENU ADICIONAL ==============");
-  console.log("6 - Listar veículos por tipo modificado");
+  console.log("6 - Listagem dos veículos cadastrados");
+  console.log("7 - Listagem dos veículos por tipo modificado");
   console.log("0 - Sair do Sistema");
   console.log("==============================================");
   const opcao = readline.questionInt("Escolha uma opção: ");
@@ -237,7 +247,7 @@ while (loop) {
       imprimirOpcoesEscolha();
       const tipoEscolhido = readline.questionInt("Escolha o tipo de veículo que deseja listar (pelo número): ");
       const tipo = tipoEscolhido === 1 ? 'Carro' : (tipoEscolhido === 2 ? 'Moto' : '');
-      if (tipo) listarVeiculos(tipo);
+      if (tipo) listarVeiculos(tipo, false);
       else console.log("Opção inválida. Por favor, escolha 1 para Carro ou 2 para Moto.");
       break;
     case 2:
@@ -258,8 +268,29 @@ while (loop) {
       else console.log("Opção inválida. Por favor, escolha 1 para Carro ou 2 para Moto.");
       break;
     case 6:
+      console.log("Exibir todos os cadastros:");
+      console.log("------------------------");
+
+      const tipoExibir = readline.question("Digite o tipo de veículo que deseja exibir: ");
+      const cadastrosFiltrados = veiculosCadastrados.filter(v => v.tipo.toLowerCase() === tipoExibir.toLowerCase());
+
+      if (cadastrosFiltrados.length > 0) {
+        cadastrosFiltrados.forEach(v => v.exibir());
+      } else {
+        console.log(`Nenhum cadastro de ${tipoExibir} encontrado.`);
+      }
+      break;
+    case 7:
+      console.log("Exibir a lista de veículos por tipo modificado:");
+      console.log("------------------------");
+      
       const tipoModificado = readline.question("Digite o tipo modificado: ");
-      listarVeiculos(tipoModificado);
+      const mostrarModificados = tipoModificado.toLowerCase() === 'carro' || tipoModificado.toLowerCase() === 'moto';
+      if (mostrarModificados) {
+        listarVeiculos(tipoModificado, true);
+      } else {
+        console.log("Opção inválida. Por favor, escolha 'Carro' ou 'Moto'.");
+      }
       break;
     case 0:
       console.log("Obrigado por acessar nosso sistema! Atendimento encerrado...");
