@@ -1,7 +1,7 @@
 var cadastro_pessoas = [];
 
 var pessoa1 = {
-    nome: "Mylena Oliveira",
+    nome: "Mylena Araújo",
     salario: 5000,
     idade: 24,
     possui_diploma: true
