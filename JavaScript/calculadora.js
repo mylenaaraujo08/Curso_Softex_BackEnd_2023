@@ -20,7 +20,7 @@ function calcular(valor1, valor2, operador) {
     }
     return `Resultado: ${resultado}`;
 }
-let valor1 = 10;
+let valor1 = 25;
 let valor2 = 3;
 let operador = '/';
 
