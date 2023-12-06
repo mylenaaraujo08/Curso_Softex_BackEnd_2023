@@ -1,46 +1,35 @@
 class Computer {
-    constructor(ram, hdd, cpu, type) {
+    RAM: string;
+    HDD: string;
+    CPU: string;
+    type: string;
+
+    constructor(ram: string, hdd: string, cpu: string, type: string) {
         this.RAM = ram;
         this.HDD = hdd;
         this.CPU = cpu;
         this.type = type;
     }
 
-    getRAM() {
-        return this.RAM;
-    }
-
-    getHDD() {
-        return this.HDD;
-    }
-
-    getCPU() {
-        return this.CPU;
-    }
-
-    getType() {
-        return this.type;
-    }
-
-    toString() {
+    toString(): string {
         return `${this.type} - RAM: ${this.RAM}GB, HDD: ${this.HDD}GB, CPU: ${this.CPU}GHz`;
     }
 }
 
 class PC extends Computer {
-    constructor(ram, hdd, cpu) {
+    constructor(ram: string, hdd: string, cpu: string) {
         super(ram, hdd, cpu, 'PC');
     }
 }
 
 class Server extends Computer {
-    constructor(ram, hdd, cpu) {
+    constructor(ram: string, hdd: string, cpu: string) {
         super(ram, hdd, cpu, 'Server');
     }
 }
 
 class ComputerFactory {
-    static getComputer(type, ram, hdd, cpu) {
+    static getComputer(type: string, ram: string, hdd: string, cpu: string): Computer | null {
         if (type.toLowerCase() === 'pc') {
             return new PC(ram, hdd, cpu);
         } else if (type.toLowerCase() === 'server') {
@@ -53,10 +42,7 @@ class ComputerFactory {
 let pc = ComputerFactory.getComputer('PC', '8', '713', '6.4');
 let server = ComputerFactory.getComputer('Server', '33', '2324', '6.12');
 
-if (pc) {
+if (pc instanceof Computer && server instanceof Computer) {
     console.log(pc.toString());
-}
-
-if (server) {
     console.log(server.toString());
 }
