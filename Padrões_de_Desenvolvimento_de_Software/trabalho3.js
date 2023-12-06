@@ -1,54 +1,53 @@
-class Sanduiche {
-    getDescricao() {
+interface Sanduiche {
+    getDescricao(): string;
+    getCusto(): number;
+}
+
+class SanduicheBase implements Sanduiche {
+    getDescricao(): string {
         return 'Sanduíche';
     }
 
-    getCusto() {
+    getCusto(): number {
         return 0;
     }
 }
 
-class FrangoAssado extends Sanduiche {
-    getDescricao() {
+class FrangoAssado implements Sanduiche {
+    getDescricao(): string {
         return 'Frango Assado';
     }
 
-    getCusto() {
+    getCusto(): number {
         return 4.5;
     }
 }
 
-class Peperoni extends Sanduiche {
-    constructor(sanduiche) {
-        super();
-        this.sanduiche = sanduiche;
-    }
+class Peperoni implements Sanduiche {
+    constructor(private sanduiche: Sanduiche) {}
 
-    getDescricao() {
+    getDescricao(): string {
         return `${this.sanduiche.getDescricao()}, Peperoni`;
     }
 
-    getCusto() {
+    getCusto(): number {
         return this.sanduiche.getCusto() + 0.99;
     }
 }
 
-class QueijoMussarelaRalado extends Sanduiche {
-    constructor(sanduiche) {
-        super();
-        this.sanduiche = sanduiche;
-    }
+class QueijoMussarelaRalado implements Sanduiche {
+    constructor(private sanduiche: Sanduiche) {}
 
-    getDescricao() {
+    getDescricao(): string {
         return `${this.sanduiche.getDescricao()}, Queijo Mussarela Ralado`;
     }
 
-    getCusto() {
+    getCusto(): number {
         return this.sanduiche.getCusto() + 2.99;
     }
 }
 
-let meuSanduiche = new FrangoAssado();
+let meuSanduiche: Sanduiche = new FrangoAssado();
 meuSanduiche = new Peperoni(meuSanduiche);
 meuSanduiche = new QueijoMussarelaRalado(meuSanduiche);
 
